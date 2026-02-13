@@ -39,11 +39,7 @@ env/
 *~
 .DS_Store
 
-# Django
-db.sqlite3
-/staticfiles/
-/media/
-local_settings.py
+
 
 # Temporary files
 *.log
