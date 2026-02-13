@@ -1,0 +1,12 @@
+shsite/.venv/
+shsite/db.sqlite3
+__pycache__/
+*.pyc
+*.pyo
+*.log
+.env
+.DS_Store
+Thumbs.db
+node_modules/
+dist/
+build/
