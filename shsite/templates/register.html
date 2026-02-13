@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Register - ServicesHand{% endblock %}
+{% block head %}<style>body{background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%)}.form-container{max-width:400px;margin:50px auto;background:#fff;padding:20px;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.1)}</style>{% endblock %}
+{% block content %}
+<div class="form-container">
+<h2 class="text-center">Register</h2>
+<form method="post">{% csrf_token %}
+<div class="mb-3"><input type="text" name="name" class="form-control" placeholder="Name" required></div>
+<div class="mb-3"><input type="text" name="phone" class="form-control" placeholder="Phone" required></div>
+<div class="mb-3"><input type="email" name="email" class="form-control" placeholder="Email" required></div>
+<div class="mb-3"><input type="password" name="password" class="form-control" placeholder="Password" required></div>
+<div class="mb-3"><input type="text" name="address" class="form-control" placeholder="Address"></div>
+<div class="mb-3">
+<select name="role" class="form-control" required>
+<option value="user">User</option>
+<option value="service_provider">Service Provider</option>
+</select>
+</div>
+<button type="submit" class="btn btn-primary w-100">Register</button>
+</form>
+<p class="text-center mt-3"><a href="{% url 'login' %}">Already have an account? Login</a></p>
+</div>
+{% endblock %}

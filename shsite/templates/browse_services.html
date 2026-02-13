@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Browse Services{% endblock %}
+{% block head %}
+<style>
+.card{box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.badge{margin-right:6px}
+</style>
+{% endblock %}
+{% block content %}
+<div class="container">
+  <h2 class="mb-3">Service Providers</h2>
+  <div class="row">
+{% for p in providers %}
+<div class="col-md-4 mb-3">
+<div class="card">
+<div class="card-body">
+<h5 class="card-title">{{ p.name }}</h5>
+<p class="card-text mb-1"><strong>Phone:</strong> {{ p.phone }}</p>
+<p class="card-text mb-1"><strong>Location:</strong> {{ p.location }}</p>
+<div class="mb-2">
+{% for c in p.categories.all %}
+<span class="badge bg-primary">{{ c.category_name }}</span>
+{% empty %}
+<span class="text-muted">No categories</span>
+{% endfor %}
+ </div>
+<a class="btn btn-outline-secondary btn-sm" href="{% url 'provider_detail' p.pk %}">View</a>
+</div>
+</div>
+</div>
+{% empty %}
+<p>No providers available.</p>
+{% endfor %}
+</div>
+{% endblock %}
