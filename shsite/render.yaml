@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: servicehands
+    env: python
+    buildCommand: pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput
+    startCommand: gunicorn shsite.wsgi:application
+    plan: free
+    envVars:
+      - key: DEBUG
+        value: False
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: DATABASE_URL
+        fromDatabase:
+          name: servicehands-postgres
+          property: connectionString
+
+databases:
+  - name: servicehands-postgres
+    engine: postgres
+    version: 15
+    plan: free
+    initializer: null
