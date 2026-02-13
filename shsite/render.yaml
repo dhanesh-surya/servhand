@@ -3,6 +3,7 @@ services:
     name: servicehands
     env: python
     root: shsite
+    preBuildCommand: bash ../build.sh
     buildCommand: pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput
     startCommand: gunicorn shsite.wsgi:application
     plan: free
